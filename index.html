@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- kodluyoruz logo -->
+    <img class="kodluyoruz_logo" src="/img/kodluyoruz_logo.png" alt="" width="400px">
+
+    <!-- welcome section -->
+    <h1 class="welcome">Merhaba, <span id="name"></span>! Hoş geldin!</h1>
+
+    <!-- saat border -->
+    <div class="saat-container">
+        <!-- saat -->
+        <div id="myClock" class="clock" onload="showTime()"></div>
+    </div>
+
+    <p class="normal-p"><span class="bold">Front-End Web Development</span> Patikasının<br><span
+            class="bold">JavaScript</span> kısmının 1. ödevindesiniz.</p>
+
+    <script> // saat fonksiyonu 
+        function showTime() {
+
+            const today = new Date();
+
+            let h = today.getHours();
+            let m = today.getMinutes();
+            let s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+
+            document.getElementById('myClock').innerHTML = h + ":" + m + ":" + s;
+            setTimeout(showTime, 1000);
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };
+            return i;
+        }
+        showTime()
+    </script>
+
+    <!-- kullanıcıdan isim alma -->
+    <script>
+        let name = prompt('Lütfen isminizi giriniz: ');
+        document.getElementById('name').innerHTML = name;
+    </script>
+</body>
+
+</html>
